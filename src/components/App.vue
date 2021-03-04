@@ -1,9 +1,8 @@
 <template>
     <div class="container">
-        <card v-for="(card, index) in Cards"
+        <card v-for="(card, index) in cards"
             :key="index"
-            :id="index"
-            :pairId="card.id"
+            :id="card.id"
         />
     </div>
 </template>
@@ -18,8 +17,8 @@ export default {
     },
     computed:{
         ...mapGetters([
-            'Cards'
-        ])
+            'cards',
+        ]),
     },
     data(){
         return{
@@ -28,7 +27,7 @@ export default {
     },
     methods:{
         ...mapActions([
-            'gameInitialize'
+            'gameInitialize',
         ]),
     },
     mounted(){
@@ -38,15 +37,13 @@ export default {
 </script>
 
 <style lang="scss">
-    @import '../styles/cards.scss';
-
     .container {
         display: flex;
         flex-wrap: wrap;
         margin: 0 auto;
         justify-content: center;
         align-items: flex-start;
-        width: 50%;
+        width: 550px;
         background: green;
     }
 </style>

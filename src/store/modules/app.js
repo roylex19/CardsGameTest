@@ -1,17 +1,18 @@
 export default {
     state: {
-        cards: [{
-            pairId: 0,
-            isOpened: false
-        }]
+        cards: [],
+        firstCardId: null,
     },
     mutations: {
         CREATE_CARDS_ARRAY(state, count = 36){
-            var k = 0
-            for(var i = 0; i < count - 1; i++){
+            state.cards = []
+            var k = 1
+            for(var i = 1; i < count + 1; i++){
                 state.cards.push({
+                    id: i,
                     pairId: k,
-                    isOpened: false
+                    isOpened: false,
+                    isHidden: false,
                 })
                 if(i % 2 == 0)
                     k++
@@ -28,24 +29,39 @@ export default {
             }
         },
         CHANGE_CARD_OPEN_STATE(state, data){
-            state.cards[data.id].isOpened = data.isOpened
-        }
+            state.cards.find(card => card.id == data.id).isOpened = data.isOpened
+        },
+        SET_FIRST_CARD_ID(state, id){
+            state.firstCardId = id
+        },
+        HIDE_CARD(state, id){
+            state.cards.find(card => card.id == id).isHidden = true
+        },
     },   
     actions: {
         gameInitialize({commit}){
             commit('CREATE_CARDS_ARRAY')
-            commit('SHUFFLE_CARDS_ARRAY')
+            //commit('SHUFFLE_CARDS_ARRAY')
         },
         changeCardOpenState({commit}, data){
             commit('CHANGE_CARD_OPEN_STATE', data)
+        },
+        setFirstCardId({commit}, id){
+            commit('SET_FIRST_CARD_ID', id)
+        },
+        hideCard({commit}, id){
+            commit('HIDE_CARD', id)
         }
     },
     getters: {
-        Cards: state => {
+        cards: state => {
             return state.cards
         },
-        Card: state => id => {
-            return state.cards[id]
+        card: state => id => {
+            return state.cards.find(card => card.id == id)
+        },
+        firstCardId: state => {
+            return state.firstCardId
         }
     },
 }
