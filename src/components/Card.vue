@@ -1,76 +1,49 @@
 <template>
-    <div class="card" @click="open" v-show="!thisCard.isHidden">
-        <div class="card__body">
-            <div class="card__icon" :class="cardClass" v-if="thisCard.isOpened"></div>
-            <div class="card__icon" v-else></div>
-        </div>
+    <div class="card" :class="[flippedStyles, findedStyles]" @click="selectCard">
+        <div class="card__icon card__icon_front" :class="iconStyles"/>
+        <div class="card__icon card__icon_back"/>
     </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
-
 export default {
-    props: [
-        'id',
-    ],
-    computed: {
-        ...mapGetters([
-            'card',
-            'firstCardId'
-        ]),
-        cardClass(){
-            return 'icon__' + this.thisCard.pairId
+    props: {
+        position: {
+            type: Number,
+            required: true
         },
-        thisCard(){
-            return this.card(this.id)
+        visible: {
+            type: Boolean,
+            default: false
         },
-        FirstCardId: {
-            get(){
-                return this.firstCardId
-            },
-            set(val){
-                this.setFirstCardId(val)
-            }
+        pairId: {
+            type: Number,
+            required: true
         },
-        firstCard(){
-            return this.card(this.FirstCardId)
+        finded: {
+            type: Boolean,
+            default: false
         }
     },
-    data(){
-        return{
-            handleDelay: 500
+    computed: {
+        iconStyles(){
+            return 'card__icon_' + this.pairId
+        },
+        flippedStyles(){
+            if(this.visible)
+                return 'card_flipped'
+        },
+        findedStyles(){
+            if(this.finded)
+                return 'card_finded'
         }
     },
     methods:{
-        ...mapActions([
-            'changeCardOpenState',
-            'setFirstCardId',
-            'closeCard'
-        ]),
-        open(){
-            this.thisCard.isOpened = true
-
-            if(!this.FirstCardId){
-                this.FirstCardId = this.id
-            } else if(this.FirstCardId && this.thisCard.id != this.FirstCardId){
-                if(this.firstCard.pairId == this.thisCard.pairId){
-                    setTimeout(this.hide, this.handleDelay)
-                } else {
-                    setTimeout(this.close, this.handleDelay)
-                }
-                
-            }
-        },
-        hide(){
-            this.thisCard.isHidden = true
-            this.firstCard.isHidden = true
-            this.FirstCardId = null
-        },
-        close(){
-            this.thisCard.isOpened = false
-            this.firstCard.isOpened = false
-            this.FirstCardId = null
+        selectCard(){
+            this.$emit('selectCard', {
+                position: this.$props.position,
+                pairId: this.$props.pairId
+            })
         }
     }
 }
@@ -80,19 +53,34 @@ export default {
     @import '../styles/card-icons.scss';
 
     .card {
+        position: relative;
         display: flex;
         justify-content: center;
-        width: 75px;
-        height: 80px;
-        background: #ccc;
-        margin: 5px;
-        &__body {
-            display: flex;
-            align-items: center;
-        }
+        background: #eee;
+        border: 1px solid #000;
+        width: 68px;
+        height: 72px;
+        border-radius: 10px;
+        transition: 0.5s transform;
+        transform-style: preserve-3d;
+        transition: all 0.3s ease-out;
         &__icon {
-            width: 68px;
-            height: 72px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            &_front{
+                transform: rotateY(180deg);
+            }
+            &_back{
+                backface-visibility: hidden;       
+                border-radius: 10px;
+            }
+        }
+        &_flipped{
+            transform: rotateY(180deg);
+        }
+        &_finded{
+            opacity: 0;
         }
     }
 </style>

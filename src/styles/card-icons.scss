@@ -1,91 +1,95 @@
 $atlas-url: url('../assets/atlas.png');
 
-.icon__1{
-    background-image: $atlas-url;
-    background-position: -12px -9px;
-}
-
-.icon__2{
-    background-image: $atlas-url;
-    background-position: -93px -9px;
-}
-
-.icon__3{
-    background-image: $atlas-url;
-    background-position: -174px -9px;
-}
-
-.icon__4{
-    background-image: $atlas-url;
-    background-position: -258px -9px;
-}
-
-.icon__5{
-    background-image: $atlas-url;
-    background-position: -339px -9px;
-}
-
-.icon__6{
-    background-image: $atlas-url;
-    background-position: -501px -9px;
-}
-
-.icon__7{
-    background-image: $atlas-url;
-    background-position: -582px -9px;
-}
-
-.icon__8{
-    background-image: $atlas-url;
-    background-position: -663px -9px;
-}
-
-.icon__9{
-    background-image: $atlas-url;
-    background-position: -738px -9px;
-}
-
-.icon__10{
-    background-image: $atlas-url;
-    background-position: -822px -9px;
-}
-
-.icon__11{
-    background-image: $atlas-url;
-    background-position: -900px -9px;
-}
-
-.icon__12{
-    background-image: $atlas-url;
-    background-position: -15px -93px;
-}
-
-.icon__13{
-    background-image: $atlas-url;
-    background-position: -96px -93px;
-}
-
-.icon__14{
-    background-image: $atlas-url;
-    background-position: -171px -93px;
-}
-
-.icon__15{
-    background-image: $atlas-url;
-    background-position: -252px -93px;
-}
-
-.icon__16{
-    background-image: $atlas-url;
-    background-position: -333px -93px;
-}
-
-.icon__17{
-    background-image: $atlas-url;
-    background-position: -417px -93px;
-}
-
-.icon__18{
-    background-image: $atlas-url;
-    background-position: -500px -93px;
+.card{
+    &__icon{        
+        &_1{
+            background-image: $atlas-url;
+            background-position: -12px -9px;
+        }
+        
+        &_2{
+            background-image: $atlas-url;
+            background-position: -93px -9px;
+        }
+        
+        &_3{
+            background-image: $atlas-url;
+            background-position: -174px -9px;
+        }
+        
+        &_4{
+            background-image: $atlas-url;
+            background-position: -258px -9px;
+        }
+        
+        &_5{
+            background-image: $atlas-url;
+            background-position: -339px -9px;
+        }
+        
+        &_6{
+            background-image: $atlas-url;
+            background-position: -501px -9px;
+        }
+        
+        &_7{
+            background-image: $atlas-url;
+            background-position: -582px -9px;
+        }
+        
+        &_8{
+            background-image: $atlas-url;
+            background-position: -663px -9px;
+        }
+        
+        &_9{
+            background-image: $atlas-url;
+            background-position: -738px -9px;
+        }
+        
+        &_10{
+            background-image: $atlas-url;
+            background-position: -822px -9px;
+        }
+        
+        &_11{
+            background-image: $atlas-url;
+            background-position: -900px -9px;
+        }
+        
+        &_12{
+            background-image: $atlas-url;
+            background-position: -15px -93px;
+        }
+        
+        &_13{
+            background-image: $atlas-url;
+            background-position: -96px -93px;
+        }
+        
+        &_14{
+            background-image: $atlas-url;
+            background-position: -171px -93px;
+        }
+        
+        &_15{
+            background-image: $atlas-url;
+            background-position: -252px -93px;
+        }
+        
+        &_16{
+            background-image: $atlas-url;
+            background-position: -333px -93px;
+        }
+        
+        &_17{
+            background-image: $atlas-url;
+            background-position: -417px -93px;
+        }
+        
+        &_18{
+            background-image: $atlas-url;
+            background-position: -500px -93px;
+        }
+    }
 }
