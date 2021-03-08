@@ -1,5 +1,5 @@
-var Vue = require('vue')
-var _ = require('lodash')
+import Vue from 'vue'
+import _ from 'lodash'
 
 import store from './store'
 

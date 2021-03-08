@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
     computed: {
@@ -30,17 +30,11 @@ export default {
             'stats'
         ])
     },
-    data(){
-        return {
-
-        }
-    },
     methods: {
-
+        ...mapMutations([
+            'setCurrentScene'
+        ])
     },
-    mounted(){
-
-    }
 }
 </script>
 

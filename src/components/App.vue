@@ -24,11 +24,6 @@ export default {
             'currentScene'
         ]),
     }, 
-    data(){
-        return{
-            
-        }
-    },
     methods:{
         ...mapActions([
             'loadStatsFromStorage'

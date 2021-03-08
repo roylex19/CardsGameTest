@@ -95,12 +95,12 @@ export default {
         },
         restartGame(){
             this.resetCards()
-            //this.shuffleCards()
+            this.shuffleCards()
             this.startTimer()
         },
         startTimer(){
             this.time = '00:00'
-            this.interval = setInterval(() => {
+            this.timerInterval = setInterval(() => {
                 if(this.allCardsFinded){
                     this.addStatsInStorage(this.time)
                     this.stopTimer()
@@ -110,12 +110,12 @@ export default {
             }, 1000)
         },
         stopTimer(){
-            clearInterval(this.interval)
+            clearInterval(this.timerInterval)
         }
     },
     mounted(){
         this.createCards()
-        //this.shuffleCards()
+        this.shuffleCards()
         this.startTimer()
     }
 }
