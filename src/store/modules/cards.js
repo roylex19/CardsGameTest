@@ -38,5 +38,8 @@ export default {
         cardById: state => id => {
             return state.cards[id]
         },
+        allCardsFinded: state => {
+            return (state.cards.filter(card => card.finded).length / 2) === 18
+        }
     },
 }

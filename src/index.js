@@ -1,4 +1,4 @@
-window.Vue = require('vue')
+var Vue = require('vue')
 var _ = require('lodash')
 
 import store from './store'
